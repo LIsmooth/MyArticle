@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="eBao.po.TypeInfo" table="typeinfo">
+		<id name="typeno">
+			<generator class="sequence">
+				<param name="sequence">seq_typeno</param>
+			</generator>
+		</id>
+		<property name="typename" />
+			
+		<bag name="articles" order-by="lastchange desc" inverse="false">
+			<key column="typeno"></key>
+			<one-to-many class="eBao.po.Articles"/>
+		</bag>
+
+	</class>
+
+</hibernate-mapping>

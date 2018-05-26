@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="eBao.po.UserInfo" table="userinfo">
+		<id name="userid">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<property name="userpwd" />
+		<property name="nickname" />
+		
+		<bag name="favoriteArtis" table="favorites" lazy="false" inverse="false" cascade="all">
+			<key column="userid"/>
+			<many-to-many class="eBao.po.Articles" column="articleno"/>
+		</bag>
+		
+		<bag name="articles" inverse="true" cascade="all" lazy="true">
+			<key column="userid"/>
+			<one-to-many class="eBao.po.Articles"/>
+		</bag>
+
+	</class>
+
+</hibernate-mapping>
